@@ -1,0 +1,18 @@
+{
+  "name": "День без",
+  "short_name": "День без",
+  "description": "Локальний трекер звичок, утримання та подій.",
+  "lang": "uk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f3ec",
+  "theme_color": "#244236",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
