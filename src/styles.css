@@ -287,6 +287,7 @@ h3 {
   width: min(760px, 100%);
   max-height: min(92vh, 980px);
   overflow: auto;
+  overflow-x: hidden;
   padding: 18px;
   box-shadow: 0 24px 80px rgba(31, 43, 39, 0.26);
 }
@@ -358,12 +359,16 @@ label {
   gap: 7px;
   font-weight: 750;
   margin-bottom: 14px;
+  min-width: 0;
 }
 
 input,
 select,
 textarea {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -372,6 +377,12 @@ textarea {
   padding: 0 12px;
   -webkit-appearance: none;
   appearance: none;
+}
+
+input[type="date"],
+input[type="time"] {
+  inline-size: 100%;
+  min-inline-size: 0;
 }
 
 .form-section {
