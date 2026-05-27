@@ -98,7 +98,17 @@ export function CreateTrackerDialog({
 
         <label>
           {uk.startDate}
-          <input type="date" required value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+          <input
+            className="date-text-input"
+            type="text"
+            inputMode="numeric"
+            pattern="\d{4}-\d{2}-\d{2}"
+            placeholder="2026-05-27"
+            maxLength={10}
+            required
+            value={startDate}
+            onChange={(event) => setStartDate(event.target.value)}
+          />
         </label>
 
         <section className="form-section">
