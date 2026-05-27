@@ -1,4 +1,4 @@
-const CACHE_NAME = "den-bez-v2";
+const CACHE_NAME = "one-day-v3";
 const BASE_URL = new URL(self.registration.scope).pathname;
 const APP_SHELL = ["", "index.html", "manifest.webmanifest", "icon.svg"].map((path) => `${BASE_URL}${path}`);
 
