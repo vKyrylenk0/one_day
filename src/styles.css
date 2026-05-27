@@ -285,6 +285,8 @@ h3 {
 .modal-panel,
 .details-panel {
   width: min(760px, 100%);
+  max-width: 100%;
+  min-width: 0;
   max-height: min(92vh, 980px);
   overflow: auto;
   overflow-x: hidden;
@@ -308,6 +310,7 @@ fieldset {
   border: 0;
   padding: 0;
   margin: 0 0 16px;
+  min-width: 0;
 }
 
 legend {
@@ -381,14 +384,30 @@ textarea {
 
 input[type="date"],
 input[type="time"] {
+  box-sizing: border-box;
   inline-size: 100%;
+  max-inline-size: 100%;
   min-inline-size: 0;
+  text-align: left;
+}
+
+input[type="date"]::-webkit-date-and-time-value,
+input[type="time"]::-webkit-date-and-time-value {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  text-align: left;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  margin-inline-start: 0;
 }
 
 .form-section {
   border-top: 1px solid var(--line);
   padding-top: 14px;
   margin-top: 4px;
+  min-width: 0;
 }
 
 .check-row {
