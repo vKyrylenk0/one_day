@@ -16,16 +16,17 @@ export function TrackerCard({ tracker, entries, onMark, onDetails }: TrackerCard
   const stats = calculateStats(tracker, entries);
   const todayEntry = entries.find((entry) => entry.trackerId === tracker.id && entry.date === todayIso());
   const todayLabel = getTodayLabel(tracker, todayEntry?.status);
+  const preset = trackerPresets[tracker.category];
 
   return (
     <article className="tracker-card" style={{ "--accent": tracker.color } as CSSProperties}>
       <div className="card-head">
         <span className="tracker-icon" aria-hidden="true">
-          {tracker.icon}
+          {preset.icon}
         </span>
         <div>
           <h2>{tracker.title}</h2>
-          <p>{trackerPresets[tracker.category].label}</p>
+          <p>{preset.label}</p>
         </div>
       </div>
       <div className="metric">{primaryMetric(tracker, stats)}</div>

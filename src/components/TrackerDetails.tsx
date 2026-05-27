@@ -30,6 +30,7 @@ export function TrackerDetails({
   onArchive,
 }: TrackerDetailsProps) {
   const stats = calculateStats(tracker, entries);
+  const preset = trackerPresets[tracker.category];
 
   return (
     <div className="modal-backdrop" role="presentation">
@@ -45,10 +46,10 @@ export function TrackerDetails({
 
         <div className="details-hero" style={{ "--accent": tracker.color } as CSSProperties}>
           <span className="tracker-icon large" aria-hidden="true">
-            {tracker.icon}
+            {preset.icon}
           </span>
           <div>
-            <p className="eyebrow">{trackerPresets[tracker.category].label}</p>
+            <p className="eyebrow">{preset.label}</p>
             <h2>{tracker.title}</h2>
             <div className="metric">{primaryMetric(tracker, stats)}</div>
             <p>{secondaryMetric(tracker, stats)}</p>

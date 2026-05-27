@@ -1,5 +1,5 @@
 export const uk = {
-  appTitle: "День без",
+  appTitle: "One Day",
   todayQuestion: "Що мені сьогодні треба відмітити?",
   addTracker: "Додати трекер",
   activeTrackers: "Активні трекери",
@@ -8,7 +8,7 @@ export const uk = {
   createTitle: "Новий трекер",
   choosePreset: "Тип трекера",
   titleLabel: "Назва",
-  titlePlaceholder: "Наприклад, Без пива",
+  titlePlaceholder: "Без кави",
   startDate: "Дата старту",
   rules: "Правила",
   emptyDay: "Порожній день",
