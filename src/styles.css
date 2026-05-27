@@ -26,12 +26,19 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 button,
 input,
 select {
   font: inherit;
+  font-size: 16px;
 }
 
 button {
@@ -48,7 +55,7 @@ select:focus-visible {
 .app-shell {
   width: min(1160px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 28px 0 48px;
+  padding: max(28px, env(safe-area-inset-top)) 0 max(48px, env(safe-area-inset-bottom));
 }
 
 .topbar {
@@ -262,7 +269,11 @@ h3 {
   z-index: 10;
   display: grid;
   place-items: center;
-  padding: 18px;
+  padding:
+    max(18px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(18px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
   background: rgba(31, 43, 39, 0.44);
 }
 
@@ -552,7 +563,7 @@ dd {
 @media (max-width: 720px) {
   .app-shell {
     width: min(100% - 20px, 1160px);
-    padding-top: 18px;
+    padding-top: max(18px, env(safe-area-inset-top));
   }
 
   .topbar {
@@ -573,9 +584,14 @@ dd {
   .modal-panel,
   .details-panel {
     width: 100%;
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100dvh;
     border-radius: 0;
+    padding:
+      max(18px, env(safe-area-inset-top))
+      max(18px, env(safe-area-inset-right))
+      max(18px, env(safe-area-inset-bottom))
+      max(18px, env(safe-area-inset-left));
   }
 
   .calendar-grid,
@@ -590,7 +606,7 @@ dd {
 
   .day-actions {
     position: fixed;
-    inset: auto 8px 8px;
+    inset: auto max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
     grid-template-columns: repeat(4, 1fr);
   }
 

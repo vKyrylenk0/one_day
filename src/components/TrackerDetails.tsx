@@ -155,6 +155,7 @@ function SettingsBlock({
         </div>
       </dl>
       {notificationPermission === "denied" && <p className="warning">{uk.notificationDenied}</p>}
+      {notificationPermission === "unsupported" && <p className="warning">{uk.notificationUnsupported}</p>}
       <button className="danger-button" onClick={() => onArchive(tracker.id)}>
         {uk.archive}
       </button>

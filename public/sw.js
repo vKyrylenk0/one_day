@@ -1,5 +1,6 @@
-const CACHE_NAME = "den-bez-v1";
-const APP_SHELL = ["/", "/index.html", "/manifest.webmanifest", "/icon.svg"];
+const CACHE_NAME = "den-bez-v2";
+const BASE_URL = new URL(self.registration.scope).pathname;
+const APP_SHELL = ["", "index.html", "manifest.webmanifest", "icon.svg"].map((path) => `${BASE_URL}${path}`);
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -17,14 +18,21 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      });
+
+      return fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => {
+          if (event.request.mode === "navigate") return caches.match(`${BASE_URL}index.html`);
+          return undefined;
+        });
     }),
   );
 });

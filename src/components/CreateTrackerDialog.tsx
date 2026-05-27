@@ -129,7 +129,9 @@ export function CreateTrackerDialog({
             </label>
           )}
           {notificationPermission === "denied" && <p className="warning">{uk.notificationDenied}</p>}
+          {notificationPermission === "unsupported" && <p className="warning">{uk.notificationUnsupported}</p>}
           <p className="subtle">{uk.notificationLimited}</p>
+          <p className="subtle">{uk.notificationInstallHint}</p>
         </section>
 
         <div className="color-row" aria-label={uk.color}>

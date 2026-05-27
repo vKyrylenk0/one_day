@@ -10,7 +10,13 @@ export function getNotificationPermission(): NotificationPermissionState {
 
 export async function requestNotificationPermission(): Promise<NotificationPermissionState> {
   if (!("Notification" in window)) return "unsupported";
-  if (Notification.permission === "default") return Notification.requestPermission();
+  if (Notification.permission === "default") {
+    try {
+      return await Notification.requestPermission();
+    } catch {
+      return "unsupported";
+    }
+  }
   return Notification.permission;
 }
 
